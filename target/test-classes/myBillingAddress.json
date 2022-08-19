@@ -1,0 +1,10 @@
+{
+  "firstName": "demo",
+  "lastName": "user",
+  "addressLineOne": "Address Line",
+  "country": "India",
+  "city": "Dharwad",
+  "state": "Karnataka",
+  "postcode": "580001",
+  "email": "askomdch@test.com"
+}
