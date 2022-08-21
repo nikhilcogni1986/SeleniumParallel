@@ -4,7 +4,9 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.selenium.pom.utils.ConfigLoader;
 
+import java.io.FileNotFoundException;
 import java.time.Duration;
 import java.util.List;
 
@@ -19,9 +21,8 @@ public class BasePage
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
 
-    public void load(String endpoint)
-    {
-        driver.get("https://askomdch.com"+endpoint);
+    public void load(String endpoint) throws FileNotFoundException {
+        driver.get(ConfigLoader.getConfigLoaderInstance().getBaseUrl() +endpoint);
     }
 
     public WebElement waitForElementToBeVisible(By by)

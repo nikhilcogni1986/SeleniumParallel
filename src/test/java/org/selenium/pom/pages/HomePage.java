@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.selenium.pom.base.BasePage;
 
+import java.io.FileNotFoundException;
+
 public class HomePage extends BasePage
 {
     private final By storeMenuLink = By.cssSelector("#menu-item-1227>a");
@@ -11,8 +13,7 @@ public class HomePage extends BasePage
         super(driver);
     }
 
-    public HomePage load()
-    {
+    public HomePage load() throws FileNotFoundException {
         load("/");
         return this;
     }
