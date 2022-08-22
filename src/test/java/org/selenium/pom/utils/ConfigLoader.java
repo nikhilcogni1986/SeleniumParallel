@@ -1,5 +1,7 @@
 package org.selenium.pom.utils;
 
+import org.selenium.pom.constants.EnvType;
+
 import java.io.FileNotFoundException;
 import java.util.Properties;
 
@@ -9,7 +11,19 @@ public class ConfigLoader
     private static ConfigLoader configLoader;
 
     private ConfigLoader() throws FileNotFoundException {
-        properties = PropertyUtils.readProperties("src/test/resources/Config.properties");
+        String env = System.getProperty("env", String.valueOf(EnvType.STAGE));
+        switch (EnvType.valueOf(env))
+        {
+            case STAGE:
+                properties = PropertyUtils.readProperties("src/test/resources/stg_config.properties");
+                break;
+            case PRODUCTION:
+                properties = PropertyUtils.readProperties("src/test/resources/prod_config.properties");
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid ENV Type!!");
+        }
+
     }
 
     public static ConfigLoader getConfigLoaderInstance() throws FileNotFoundException {
