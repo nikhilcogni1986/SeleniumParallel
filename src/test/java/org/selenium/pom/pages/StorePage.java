@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.selenium.pom.base.BasePage;
 
+import java.io.FileNotFoundException;
 import java.time.Duration;
 
 public class StorePage extends BasePage
@@ -41,9 +42,9 @@ public class StorePage extends BasePage
         return this;
     }
 
-    public String getTitle()
+    public String getTitle(String expectedTitle)
     {
-        new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.textToBe(title, "Search results: “Blue”"));
+        new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.textToBe(title, expectedTitle));
         return driver.findElement(title).getText();
     }
 
@@ -54,7 +55,8 @@ public class StorePage extends BasePage
 
     public StorePage clickAddCartBtn(String productName)
     {
-        driver.findElement(getAddCartToBtn(productName)).click();
+        waitForElementToBeClickable(getAddCartToBtn(productName)).click();
+        //driver.findElement(getAddCartToBtn(productName)).click();
         return this;
     }
 
@@ -62,5 +64,10 @@ public class StorePage extends BasePage
     {
         waitForElementToBeClickable(viewCartBtn).click();
         return new CartPage(driver);
+    }
+
+    public StorePage load() throws FileNotFoundException {
+        load("/store");
+        return this;
     }
 }

@@ -27,7 +27,7 @@ public class MyFirstTest extends BaseTest
                 navigateToStoreUsingMenu().
                 search("Blue");
 
-        Assert.assertEquals(storePage.getTitle(),"Search results: “Blue”");
+        Assert.assertEquals(storePage.getTitle("Search results: “Blue”"),"Search results: “Blue”");
 
         storePage.clickAddCartBtn(product.getName());
         CartPage cartPage = storePage.clickVewCartBtn();
@@ -54,7 +54,7 @@ public class MyFirstTest extends BaseTest
                 navigateToStoreUsingMenu().
                 search("Blue");
 
-        Assert.assertEquals(storePage.getTitle(),"Search results: “Blue”");
+        Assert.assertEquals(storePage.getTitle("Search results: “Blue”"),"Search results: “Blue”");
 
         storePage.clickAddCartBtn(product.getName());
         CartPage cartPage = storePage.clickVewCartBtn();
