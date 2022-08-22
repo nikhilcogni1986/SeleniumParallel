@@ -9,6 +9,8 @@ import java.io.FileNotFoundException;
 public class HomePage extends BasePage
 {
     private final By storeMenuLink = By.cssSelector("#menu-item-1227>a");
+    private final By viewCartBtn = By.cssSelector("a[title='View cart']");
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -23,4 +25,23 @@ public class HomePage extends BasePage
         driver.findElement(storeMenuLink).click();
         return new StorePage(driver);
     }
+
+    private By getAddCartToBtn(String productName)
+    {
+        return By.cssSelector("a[aria-label='Add “"+productName+"” to your cart']");
+    }
+
+    public HomePage clickAddCartBtn(String productName)
+    {
+        waitForElementToBeClickable(getAddCartToBtn(productName)).click();
+        //driver.findElement(getAddCartToBtn(productName)).click();
+        return this;
+    }
+
+    public CartPage clickVewCartBtn()
+    {
+        waitForElementToBeClickable(viewCartBtn).click();
+        return new CartPage(driver);
+    }
+
 }
