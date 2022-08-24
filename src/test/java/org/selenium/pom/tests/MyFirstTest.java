@@ -1,5 +1,8 @@
 package org.selenium.pom.tests;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.selenium.pom.base.BaseTest;
 import org.selenium.pom.objects.BillingAddress;
 import org.selenium.pom.objects.Product;
@@ -14,9 +17,12 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+@Epic("Add a product")
+@Feature("Checkout a product using guest/registered user")
 public class MyFirstTest extends BaseTest
 {
-    @Test
+    @Story("Guest Checkout for a product")
+    @Test(description = "Add a product to the cart and checkout as a Guest")
     public void guestCheckOutUsingDirectAccount() throws IOException {
 
         BillingAddress billingAddress = JacksonUtils.deserialization("myBillingAddress.json",BillingAddress.class);
@@ -43,7 +49,8 @@ public class MyFirstTest extends BaseTest
         Assert.assertEquals(checkoutPage.getNotice(),"Thank you. Your order has been received.");
     }
 
-    @Test
+    @Story("Checkout a product as a registered user")
+    @Test(description = "Add a product to the cart and checkout as a registered user")
     public void loginAsUserCheckOutUsingDirectAccount() throws IOException {
 
         BillingAddress billingAddress = JacksonUtils.deserialization("myBillingAddress.json",BillingAddress.class);

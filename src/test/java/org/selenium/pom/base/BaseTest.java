@@ -36,12 +36,11 @@ public class BaseTest {
         System.out.println("CURRENT THREAD: " + Thread.currentThread().getId() + ", " + "DRIVER =" + getDriver());
     }
 
-    @Parameters("browser")
     @AfterMethod
-    public void quitDriver(ITestResult result, @Optional String browser) throws IOException {
+    public void quitDriver(ITestResult result) throws IOException {
         System.out.println("CURRENT THREAD: " + Thread.currentThread().getId() + ", " + "DRIVER =" + getDriver());
         if (result.getStatus() == ITestResult.FAILURE) {
-            File destFile = new File("scr" + File.separator + browser + File.separator +
+            File destFile = new File("scr" + File.separator + "browser" + File.separator +
                     result.getTestClass().getRealClass().getSimpleName() + File.separator
             + result.getMethod().getMethodName() + ".png");
             takeScreenshot(destFile);

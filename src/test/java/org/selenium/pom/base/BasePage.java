@@ -32,7 +32,7 @@ public class BasePage
 
     public WebElement waitForElementToBeClickable(By by)
     {
-        return wait.until(ExpectedConditions.elementToBeClickable(by));
+       return wait.until(ExpectedConditions.elementToBeClickable(by));
     }
 
     public void handleStaleElementWithForLoop(By by)

@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class AddToCartTest extends BaseTest
 {
-    @Test
+    @Test(description = "Add a product to the cart")
     public void addToCartFromProductsPage() throws IOException
     {
         Product product = new Product(1215);
@@ -26,7 +26,8 @@ public class AddToCartTest extends BaseTest
         Assert.assertEquals(cartPage.getProductName(),product.getName());
     }
 
-    @Test(dataProvider="getFeaturedProducts", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider="getFeaturedProducts", dataProviderClass = MyDataProvider.class,
+    description = "Add multiple products to the cart")
     public void addToCartFeaturedProducts(Product product) throws FileNotFoundException {
         CartPage cartPage = new HomePage(getDriver()).
                 load().

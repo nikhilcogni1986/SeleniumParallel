@@ -20,8 +20,9 @@ public class ProductThumbNail extends BasePage
 
     public ProductThumbNail clickAddCartBtn(String productName)
     {
-        waitForElementToBeClickable(getAddCartToBtn(productName)).click();
-        //driver.findElement(getAddCartToBtn(productName)).click();
+        System.out.println(productName);
+        waitForElementToBeClickable(getAddCartToBtn(productName));
+        driver.findElement(getAddCartToBtn(productName)).click();
         return this;
     }
 
